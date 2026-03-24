@@ -152,7 +152,7 @@ while True:
     reverse_matrix = cv2.getPerspectiveTransform(frame_bounds, trapezoid_bounds)
 
     #left line on blank frame
-    blank_frame_w_left_line = np.zeros((HEIGHT, WIDTH, 3), dtype=np.uint8)
+    blank_frame_w_left_line = np.zeros((HEIGHT, WIDTH), dtype=np.uint8)
     cv2.line(blank_frame_w_left_line, left_top, left_bottom, (255, 0, 0), 3)
     left_back = cv2.warpPerspective(blank_frame_w_left_line, reverse_matrix, (WIDTH, HEIGHT))
 
@@ -160,7 +160,7 @@ while True:
     left_coords=np.argwhere(left_back > 0)
 
     #right line on blank frame
-    blank_frame_w_right_line = np.zeros((HEIGHT, WIDTH, 3), dtype=np.uint8)
+    blank_frame_w_right_line = np.zeros((HEIGHT, WIDTH), dtype=np.uint8)
     cv2.line(blank_frame_w_right_line, right_top, right_bottom, (255, 0, 0), 3)
     right_back = cv2.warpPerspective(blank_frame_w_right_line, reverse_matrix, (WIDTH, HEIGHT))
 
